@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+#bttn {
+    position:fixed;
+    top:5px;
+    right:20px;
+    background-color: rgb(52, 152, 219);
+    padding:15px;
+    border:none;
+    outline: none;
+    color:white;    
+    transition: transform 0.3s ease-in-out;
+  }
+  
+#bttn.active {
+    transform:translateX(-180px);
+  
+}
+
+#submit {
+    width: 120px;
+    height: 31px;
+    background-color: rgb(255, 197, 72);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+#submit:hover {
+    background-color: red;
+    transition: all 0.3s;
+}
+
+div form label {
+    font-size: 24px;
+}
+
+div form select {
+    font-size: 20px;
+}
+
+#resultsTable {
+    border: 2px solid;
+}
+th, td {
+    border: 1px solid;
+    padding: 10px 50px;
+}
+#tharriving {
+    padding: 10px 20px;
+}
+#thstationNM {
+    padding: 10px 100px;
+}
+
+
+h1 {
+    margin: 0;
+    padding: 20px;
+    background-color: rgb(52, 152, 219); /* 요구된 색상 적용 */
+    /* 추가 스타일링이 필요한 경우 여기에 코드를 추가 */
+}
+
+#routeForm {
+    margin: 10px;
+}
+
+.menu-button {
+    font-size: 24px; /* 타이틀 폰트 크기와 비슷하게 설정 */
+    cursor: pointer;
+    /* 추가적인 스타일링 */
+}
+
+/* 반응형 내비게이션 바 스타일 */
+nav {
+    position:fixed;
+    top:0;
+    right:0;
+    background-color: rgb(52, 152, 219);
+    color: white;
+    height:100vh;
+    padding:2em;
+    transform:translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    
+    /* 기타 스타일링 속성 */
+}
+
+nav #navtitle {
+    background-color: rgb(52, 152, 219);
+    color: white; /* 제목에 대한 색상 */
+}
+
+nav ul {
+    list-style-type: none; /* 기본 목록 스타일 제거 */
+    padding: 0;
+}
+
+nav li {
+    padding: 1em 0; /* 목록 항목에 대한 패딩 */
+}
+
+nav a {
+    color: white; /* 링크에 대한 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-size: 20px;
+}
+
+/* 추가적으로 내비게이션 바가 토글될 때의 스타일 */
+nav.active {
+    transform:translateX(0);
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1; /* 사이드바 밑에 위치하도록 z-index 설정 */
+}
+
+/* 활성화된 오버레이 스타일링 */
+.overlay.active {
+    display: block;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* 버튼 및 내비게이션 바에 대한 반응형 스타일링 */
+@media (max-width: 768px) {
+    .nav-bar {
+        background-color: rgb(52, 152, 219);
+        color: white;
+    }
+
+    .menu-button {
+    font-size: 24px; /* 타이틀 폰트 크기와 비슷하게 설정 */
+    cursor: pointer;
+    }
+}
+
+.menu-button {
+    font-size: 28px; /* 타이틀 폰트 크기와 비슷하게 설정 */
+    cursor: pointer;
+    /* 추가적인 스타일링 */
+}
+
+/* 추가적인 폼 및 테이블 스타일링 */
+/* form {
+    
+}
+
+table {
+    
+} */
+

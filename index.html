@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>지하철 경로 API 프로토타입</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!-- 반응형 내비게이션 바 -->
+<nav id="navBar">
+    <ul>
+        <!-- rel은 target="_blank"의 reverse tabnabbing 보안 문제로 인하여 삽입함. -->
+        <!-- noopener: 브라우저 컨텍스트 액세스 권한 없이 새 탭에서 열기
+             noreferrer: HTTP referer header를 전송하지 않음 -->
+        <li><a href="http://www.seoulmetro.co.kr/kr/index.do?device=PC" target="_blank" rel="noopener noreferrer">서울교통공사</a></li> 
+        <li><a href="https://www.metro9.co.kr/" target="_blank" rel="noopener noreferrer">서울메트로9호선</a></li>
+    </ul>
+</nav>
+<button id="bttn" class="menu-button">&#9776;</button>
+<div id="overlay" class="overlay"></div>
+
+
+
+<div id = "maincontent" class="content">
+    <h1>지하철 경로 API 프로토타입</h1>
+    <!-- 폼 및 입력 필드들 -->
+    <form id="routeForm">
+
+
+        <label for="startStation">출발:</label>
+        <select id="startLineNo" name="startLineNo">
+            <option value="">호선 선택</option>
+        </select>
+        <select id="startStation" name="startStation">
+            <option value="">역명 선택</option>
+        </select>
+        <br>
+        <br>
+        <label for="endStation">도착:</label>
+        <select id="endLineNo" name="endLineNo">
+            <option value="">호선 선택</option>
+        </select>
+        <select id="endStation" name="endStation">
+            <option value="">역명 선택</option>
+        </select>
+
+        <!-- <input type="checkbox" id="expressOption" name="express"> -->
+        <!-- <label for="expressOption">급행 우선</label> -->
+
+        <input type="button" value="경로 분석" id="submit" onclick=""></input>
+        <hr>
+        <table class="table table-bordered table-striped table-hover table-info" id="resultsTable">
+            <thead class="thead-dark text-center">  
+                <tr>
+                    <th id="tharriving">출발/도착</th>
+                    <th id="thstationNM">역명</th>
+                    <th id="thEst">도착 예정시간 및 열차위치</th>
+                    <th id="thblank">비고</th>
+                </tr>
+            </thead>
+            <tbody class="text-center" id="htmlTbody">
+            </tbody>
+        </table>
+    </form>
+
+    <!-- 결과를 표시할 테이블 -->
+    
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
