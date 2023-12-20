@@ -7,6 +7,15 @@ body {
     margin: 0;
 }
 
+#inputboarder {
+    width: 500px;
+    height: 140px; 
+}
+
+#endstationboarder {
+    margin-top: 10px;
+}
+
 #bttn {
     position:fixed;
     top:5px;
@@ -25,12 +34,12 @@ body {
 }
 
 #submit {
-    width: 120px;
-    height: 31px;
+    width: 160px;
+    height: 40px;
     background-color: rgb(255, 197, 72);
     border: none;
     cursor: pointer;
-    padding: 0;
+    margin-top: 10px;
 }
 
 #submit:hover {
