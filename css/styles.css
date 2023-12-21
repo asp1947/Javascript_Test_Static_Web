@@ -29,7 +29,7 @@ body {
   }
   
 #bttn.active {
-    transform:translateX(-180px);
+    transform:translateX(-240px);
   
 }
 
