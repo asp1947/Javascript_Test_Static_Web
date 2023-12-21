@@ -75,6 +75,19 @@ function analyzeRoute(startStation, endStation) {
   const startIndex = line1StationsIndex[startStation];
   const endIndex = line1StationsIndex[endStation];
 
+  // 셔틀역인 광명과 서동탄을 처리하는 로직
+  if (startStation === "광명") {
+    startStation = "금천구청"; // 광명역에서 금천구청역을 거쳐야 함
+  } else if (startStation === "서동탄") {
+    startStation = "병점"; // 서동탄역에서 병점역을 거쳐야 함
+  }
+
+  if (endStation === "광명") {
+    endStation = "금천구청"; // 도착지가 광명인 경우 금천구청역까지 계산
+  } else if (endStation === "서동탄") {
+    endStation = "병점"; // 도착지가 서동탄인 경우 병점역까지 계산
+  }
+
   // 같은 라인에 있는 경우를 확인
   if (startIndex !== undefined && endIndex !== undefined) {
     // 출발지와 도착지가 메인 라인 범위 내에 있는지 확인
@@ -116,3 +129,4 @@ function analyzeRoute(startStation, endStation) {
 // 사용 예
 console.log(analyzeRoute("소요산", "영등포")); // 같은 메인 라인에 있는 경우
 console.log(analyzeRoute("영등포", "관악")); // 다른 라인에 있는 경우
+

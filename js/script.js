@@ -130,7 +130,7 @@ function groupStationsByLine(data) {
       })
       .catch(error => console.error('Error:', error));
     });
-}
+  }
   
   // 문서 로드 완료 후 드랍다운 설정 함수를 호출합니다.
   document.addEventListener('DOMContentLoaded', setupDropdowns);
