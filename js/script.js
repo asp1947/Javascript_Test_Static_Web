@@ -13,7 +13,7 @@ const url_define = "/json/realtimeStationArrival/0/3/";
 
 async function getAuthKey() {
     try {
-        const response = await fetch("[keyjsonfilepath]");
+        const response = await fetch("[AUTHKEYPATH]");
         const config = await response.json();
         return config.key;
     } catch (error) {
@@ -75,7 +75,7 @@ function updateStationDropdown(lineStations, selectedLine, stationDropdown) {
 
 // JSON 데이터를 로드하고 드랍다운을 설정하는 함수
 function setupDropdowns() {
-    fetch("[jsonfilepath]") // JSON 파일의 실제 경로로 대체해야 합니다.
+    fetch("[DBjsonPATH]") // JSON 파일의 실제 경로로 대체해야 합니다.
         .then((response) => response.json())
         .then((json) => {
             const lineStations = groupStationsByLine(json.DATA);
@@ -113,57 +113,42 @@ function setupDropdowns() {
         });
 }
 
-// function addRowTrainTable(StEdstats, StationNm, blank) {
-//   const hTbody = document.getElementById('htmlTbody')
-//   const newRow = hTbody.insertRow();
-
-//   getAuthKey().then(authKey => {
-//     fetch(url + authKey + url_define + StationNm)
-//     .then(res => res.json())
-//     .then(json => {
-//       const firstArrival = json.realtimeArrivalList[0];
-//       const barvlDt = parseInt(firstArrival.barvlDt);
-//       let displayText;
-
-//       if (barvlDt === 0) {
-//         // 열차가 도착한 경우
-//         displayText = firstArrival.arvlMsg2;
-//       } else if (barvlDt < 60) {
-//         // 60초 미만일 경우
-//         displayText = barvlDt + "초";
-//       } else {
-//         // 60초 이상일 경우 (초단위 생략)
-//         let minutes = Math.floor(barvlDt / 60);
-//         displayText = minutes + "분";
-//       }
-
-//       // 셀에 표시될 값 설정
-//       const newCell1 = newRow.insertCell(0);
-//       const newCell2 = newRow.insertCell(1);
-//       const newCell3 = newRow.insertCell(2);
-//       const newCell4 = newRow.insertCell(3);
-
-//       newCell1.innerText = StEdstats;
-//       newCell2.innerText = StationNm;
-//       newCell3.innerText = displayText;
-//       newCell4.innerText = blank;
-//     })
-//     .catch(error => console.error('Error:', error));
-//   });
-// }
-
 function addRowTrainTable(StEdstats, StationNm, travelTime) {
     const hTbody = document.getElementById("htmlTbody");
     const newRow = hTbody.insertRow();
 
-    // 셀에 표시될 값 설정
-    const newCell1 = newRow.insertCell(0);
-    const newCell2 = newRow.insertCell(1);
-    const newCell3 = newRow.insertCell(2);
+    getAuthKey().then((authKey) => {
+        fetch(url + authKey + url_define + StationNm)
+            .then((res) => res.json())
+            .then((json) => {
+                const firstArrival = json.realtimeArrivalList[0];
+                const barvlDt = parseInt(firstArrival.barvlDt);
+                let displayText;
 
-    newCell1.innerText = StEdstats;
-    newCell2.innerText = StationNm;
-    newCell3.innerText = travelTime;
+                if (barvlDt === 0) {
+                    // 열차가 도착한 경우
+                    displayText = firstArrival.arvlMsg2;
+                } else if (barvlDt < 60) {
+                    // 60초 미만일 경우
+                    displayText = barvlDt + "초";
+                } else {
+                    // 60초 이상일 경우 (초단위 생략)
+                    let minutes = Math.floor(barvlDt / 60);
+                    displayText = minutes + "분";
+                }
+                // 셀에 표시될 값 설정
+                const newCell1 = newRow.insertCell(0);
+                const newCell2 = newRow.insertCell(1);
+                const newCell3 = newRow.insertCell(2);
+                const newCell4 = newRow.insertCell(3);
+
+                newCell1.innerText = StEdstats;
+                newCell2.innerText = StationNm;
+                newCell3.innerText = travelTime;
+                newCell4.innerText = displayText;
+            })
+            .catch((error) => console.error("Error:", error));
+    });
 }
 
 // 1호선 역 정보의 배열
