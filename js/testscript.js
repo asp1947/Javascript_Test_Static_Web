@@ -59,7 +59,7 @@ const line1Stations = [
   function analyzeRoute(startStation, endStation) {
     // 출발지와 도착지가 같은 경우
     if (startStation === endStation) {
-      return "출발지와 도착지가 동일합니다.";
+      alert("출발지와 도착지가 동일합니다.");
     }
   
     // 셔틀역인 광명과 서동탄을 처리하는 로직
